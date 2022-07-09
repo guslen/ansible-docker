@@ -16,7 +16,8 @@ sast:
 include:
   - template: Security/SAST.gitlab-ci.yml
 
-build-docker-ansible:
+build-docker-image:
+  stage: build
   services:
     - docker:20.10.17-dind
   variables:
