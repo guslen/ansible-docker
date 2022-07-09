@@ -20,4 +20,4 @@ build-docker-ansible:
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker buildx create --use
-    - ddocker buildx build --push --platform linux/arm64,linux/amd64 -t $CI_REGISTRY_IMAGE:latest ./ansible-alpine
+    - ddocker buildx build --push --platform linux/arm64,linux/amd64 -t $CI_REGISTRY_IMAGE:latest .
