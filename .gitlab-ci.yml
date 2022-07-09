@@ -7,7 +7,18 @@
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
 - test
+- build
+
 sast:
   stage: test
 include:
 - template: Security/SAST.gitlab-ci.yml
+
+services:
+  - docker:dind
+
+build-docker-ansible:
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker buildx create --use
+    - ddocker buildx build --push --platform linux/arm64,linux/amd64 -t $CI_REGISTRY_IMAGE:latest ./ansible-alpine
