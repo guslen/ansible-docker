@@ -18,6 +18,6 @@ include:
 
 build-docker-ansible:
   script:
-    - docker login -u gitlab-ci-token --password-stdin $CI_JOB_TOKEN $CI_REGISTRY
+    - docker login $CI_REGISTRY -u gitlab-ci-token --password-stdin $CI_JOB_TOKEN
     - docker buildx create --use
     - ddocker buildx build --push --platform linux/arm64,linux/amd64 -t $CI_REGISTRY_IMAGE:latest ./ansible-alpine
