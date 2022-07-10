@@ -23,5 +23,4 @@ build-docker-image:
     IMAGE_TAG: $CI_REGISTRY_IMAGE
   script:
     - docker buildx create --use
-    - docker buildx build --platform linux/arm64,linux/amd64 -t guslending/ansible .
-    - docker push guslending/ansible:main
+    - docker buildx build --push --platform linux/arm64,linux/amd64 -t docker.io/guslending/ansible .
