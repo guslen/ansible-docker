@@ -5,4 +5,7 @@ RUN echo "ansible   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 COPY etc/ansible /etc/ansible
 RUN adduser -D ansible
 RUN chown -R ansible /ansible-app
+RUN mkdir /home/ansible/.ssh
+RUN chmod 700 .ssh
+RUN chown ansible .ssh
 USER ansible
