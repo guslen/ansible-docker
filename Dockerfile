@@ -7,4 +7,4 @@ COPY etc/ansible /etc/ansible
 RUN adduser -D ansible
 RUN chown -R ansible /ansible-app
 USER ansible
-ENTRYPOINT ["sh" ,"/bin/custom-ansible.sh" ]
+ENTRYPOINT ["/bin/custom-ansible.sh" ]
