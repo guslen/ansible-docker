@@ -22,5 +22,6 @@ build-docker-image:
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE
   script:
+    - echo "$DOCKER_HUB_TOKEN" | docker login -u $DOCKER_HUB_USER --password-stdin
     - docker buildx create --use
     - docker buildx build --push --platform linux/arm64,linux/amd64 -t docker.io/guslending/ansible .
