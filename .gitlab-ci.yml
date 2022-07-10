@@ -20,8 +20,11 @@ build-docker-image:
   services:
     - docker:20.10.17-dind
   variables:
-    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    IMAGE_TAG: $CI_REGISTRY_IMAGE/ansible:$CI_COMMIT_REF_SLUG
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker buildx create --use
-    - docker buildx build --push --platform linux/arm64,linux/amd64 -t $IMAGE_TAG .
+    - docker buildx build --platform linux/arm64,linux/amd64 -t $IMAGE_TAG .
+    - docker tag $IMAGE_TAG guslending/ansible:main
+    - docker push $IMAGE_TAG
+    - docker push guslending/ansible:main
