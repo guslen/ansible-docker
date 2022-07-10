@@ -6,6 +6,6 @@ COPY etc/ansible /etc/ansible
 RUN adduser -D ansible
 RUN chown -R ansible /ansible-app
 RUN mkdir /home/ansible/.ssh
-RUN chmod 700 .ssh
-RUN chown ansible .ssh
+RUN chmod 700 /home/ansible/.ssh
+RUN chown ansible /home/ansible/.ssh
 USER ansible
