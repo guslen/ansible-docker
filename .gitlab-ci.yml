@@ -6,6 +6,7 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
+  - test
   - build
 
 sast:
@@ -21,6 +22,6 @@ build-docker-image:
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE
   script:
-    - echo "$DOCKER_HUB_TOKEN" | docker login -u $DOCKER_HUB_USER --password-stdin
+    - docker login registry.gitlab.com
     - docker buildx create --use
     - docker buildx build --push --platform linux/arm64,linux/amd64 -t registry.gitlab.com/guslen/ansible .
