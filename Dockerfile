@@ -1,4 +1,4 @@
-FROM alpine as base
+FROM alpine
 RUN apk add -l --no-cache ansible sudo
 WORKDIR /ansible-app
 RUN echo "ansible   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
