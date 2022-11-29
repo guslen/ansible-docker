@@ -15,7 +15,7 @@ jobs:
       - uses: docker/build-push-action@v3
         with:
           push: false
-          tags: guslen/ansible:latest
+          tags: guslending/ansible:latest
   dependabot:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'dependabot[bot]' }}
