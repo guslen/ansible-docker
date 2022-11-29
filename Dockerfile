@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.17.0
 RUN apk add -l --no-cache ansible
 WORKDIR /ansible-app
 RUN chown -R root /ansible-app
